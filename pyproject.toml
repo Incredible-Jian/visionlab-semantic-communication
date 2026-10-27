@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "visionlab"
+version = "0.1.0"
+description = "VisionLab: Intelligent Perception and Semantic Communication Laboratory — a hands-on PyTorch learning and research project"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "VisionLab contributors" }]
+keywords = ["pytorch", "deep-learning", "semantic-communication", "computer-vision", "image-compression"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+# 注意：torch / torchvision 不在此列出，因为它们必须使用官方 CPU 源安装
+# （见 README 与 requirements.txt），直接声明会导致误装体积巨大的 CUDA 版。
+dependencies = [
+    "numpy>=1.24,<2",
+    "matplotlib>=3.8",
+    "pillow>=10",
+    "tqdm>=4.66",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v"

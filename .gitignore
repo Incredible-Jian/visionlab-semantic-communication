@@ -1,0 +1,43 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# --- 虚拟环境 ---
+.venv/
+venv/
+env/
+
+# --- 测试 / 构建缓存 ---
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# --- 数据集与实验输出（大文件不提交）---
+data/*
+!data/README.md
+outputs/
+runs/
+logs/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# --- 密钥与本地配置 ---
+.env
+.env.*
+*.key
+*.pem
+configs/local*.yaml
+
+# --- IDE / 编辑器 ---
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
