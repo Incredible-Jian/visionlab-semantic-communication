@@ -20,8 +20,8 @@
 
 | 阶段 | 主题 | 状态 |
 | --- | --- | --- |
-| A | 工程初始化 | ✅ 进行中 |
-| B | PyTorch 基础实验 | 待开始 |
+| A | 工程初始化 | ✅ 已完成 |
+| B | PyTorch 基础实验 | ✅ 已完成 |
 | C | 机器学习与图像分类 | 待开始 |
 | D | 可靠实验流程 | 待开始 |
 | E | 图像通信实验 | 待开始 |
@@ -69,6 +69,25 @@ python -c "import visionlab; print(visionlab.__version__)"
 # 运行自动化测试
 pytest
 ```
+
+## 实验
+
+阶段 B 的 PyTorch 基础实验位于 `experiments/01_pytorch_basics/`，全部可在
+CPU 上运行、使用固定随机种子、无需下载数据集。示例：
+
+```bash
+# 张量基础
+python experiments/01_pytorch_basics/01_tensor_basics.py
+
+# 线性回归
+python experiments/01_pytorch_basics/04_linear_regression.py
+
+# 神经网络训练流程（记录并可视化训练/验证损失）
+python experiments/01_pytorch_basics/05_nn_training.py
+```
+
+图像会保存到 `outputs/01_pytorch_basics/`（已被 `.gitignore` 忽略）。各实验的
+输入、输出与运行命令详见 [experiments/01_pytorch_basics/README.md](experiments/01_pytorch_basics/README.md)。
 
 ## 项目结构
 

@@ -14,16 +14,21 @@
 - [x] 配置 `pyproject.toml`、`requirements.txt`、MIT License
 - [x] 创建独立虚拟环境 `.venv` 并安装 CPU 版 PyTorch
 - [x] `visionlab` 包可导入，冒烟测试通过
-- [ ] 完成首次 Git 提交
+- [x] 完成首次 Git 提交
 
-## 阶段 B：PyTorch 基础实验
+## 阶段 B：PyTorch 基础实验（已完成）
 
 主题：张量操作、Autograd 梯度计算、梯度下降、`nn.Module`、MSE 损失、
-反向传播与优化器。
+反向传播与优化器、训练/验证损失记录与可视化。
 
-- `src/visionlab/utils/seed.py`：统一固定随机种子
-- `experiments/01_pytorch_basics/`：可运行的基础实验脚本，输出真实运行结果
-- 配套测试与文档
+已完成：
+
+- [x] `src/visionlab/utils/seed.py`：统一固定随机种子（`set_seed`）
+- [x] `src/visionlab/utils/device.py`：CPU 设备选择（`get_device`）
+- [x] `experiments/01_pytorch_basics/`：5 个可运行实验
+  （张量 / Autograd / 梯度下降对比 / 线性回归 / MLP 训练流程）
+- [x] 训练与验证损失记录 + matplotlib 可视化（保存到 `outputs/`）
+- [x] 配套 pytest 测试（6 项全部通过）与文档
 
 ## 阶段 C：机器学习与图像分类
 
