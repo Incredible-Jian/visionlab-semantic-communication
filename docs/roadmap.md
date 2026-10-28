@@ -30,16 +30,27 @@
 - [x] 训练与验证损失记录 + matplotlib 可视化（保存到 `outputs/`）
 - [x] 配套 pytest 测试（6 项全部通过）与文档
 
-## 阶段 C：机器学习与图像分类
+## 阶段 C：机器学习与图像分类（已完成）
 
 主题：数据集与 DataLoader、训练/验证/测试集划分、MLP 图像分类、CNN 图像
 分类、指标评估与可视化、模型保存与加载。
 
-- 主数据集：FashionMNIST（CPU 友好）
-- 进阶数据集：CIFAR-10
-- `src/visionlab/data/`、`src/visionlab/models/`、`src/visionlab/train/`、
-  `src/visionlab/visualization/`、`src/visionlab/utils/metrics.py`
-- 用 numpy 自行实现准确率、混淆矩阵、精确率/召回率/F1
+已完成：
+
+- [x] `src/visionlab/data/fashion_mnist.py`：FashionMNIST 下载（torchvision
+      默认源 + ModelScope 阿里云镜像回退、MD5 校验）、训练/验证划分、DataLoader
+- [x] `src/visionlab/utils/metrics.py`：numpy 自实现准确率、混淆矩阵、宏 F1
+- [x] `src/visionlab/models/`：`MLP`、`CNN`
+- [x] `src/visionlab/train/trainer.py`：`train_one_epoch` / `evaluate` / `train` /
+      `save_checkpoint` / `load_checkpoint`
+- [x] `src/visionlab/visualization/plots.py`：损失曲线与混淆矩阵绘图
+- [x] `experiments/02_image_classification/`：MLP、CNN 两个可运行实验，真实记录
+      损失/准确率/耗时，保存最佳 checkpoint 并验证加载后推理一致
+- [x] 配套 pytest 测试（阶段累计 23 项全部通过）
+
+留待后续：
+
+- [ ] CIFAR-10 进阶数据集（约 170 MB，需另行确认下载方式后再进行）
 
 ## 阶段 D：可靠实验流程
 

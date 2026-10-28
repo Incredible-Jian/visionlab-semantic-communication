@@ -22,7 +22,7 @@
 | --- | --- | --- |
 | A | 工程初始化 | ✅ 已完成 |
 | B | PyTorch 基础实验 | ✅ 已完成 |
-| C | 机器学习与图像分类 | 待开始 |
+| C | 机器学习与图像分类 | ✅ 已完成 |
 | D | 可靠实验流程 | 待开始 |
 | E | 图像通信实验 | 待开始 |
 | F | 语义通信原型 | 待开始 |
@@ -89,6 +89,22 @@ python experiments/01_pytorch_basics/05_nn_training.py
 图像会保存到 `outputs/01_pytorch_basics/`（已被 `.gitignore` 忽略）。各实验的
 输入、输出与运行命令详见 [experiments/01_pytorch_basics/README.md](experiments/01_pytorch_basics/README.md)。
 
+阶段 C 的图像分类实验位于 `experiments/02_image_classification/`，使用
+FashionMNIST（约 30 MB，首次运行自动下载）演示 MLP / CNN 的完整训练/验证/
+测试流程。示例：
+
+```bash
+# MLP 图像分类
+python experiments/02_image_classification/01_mlp_classification.py
+
+# CNN 图像分类
+python experiments/02_image_classification/02_cnn_classification.py
+```
+
+每个脚本会输出真实的损失/准确率、训练耗时、混淆矩阵与最佳模型 checkpoint
+（保存到 `outputs/02_image_classification/`，不提交 Git）。详见
+[experiments/02_image_classification/README.md](experiments/02_image_classification/README.md)。
+
 ## 项目结构
 
 ```
@@ -103,6 +119,11 @@ visionlab-semantic-communication/
 │   └── README.md             # 数据集获取/存储/隐私说明（不提交数据本体）
 ├── docs/                     # 学习路线、理论解释、实验记录
 ├── src/visionlab/            # 可复用代码（核心）
+│   ├── data/                 #   数据集加载与划分（FashionMNIST）
+│   ├── models/               #   MLP / CNN 模型定义
+│   ├── train/                #   训练/评估/checkpoint 通用流程
+│   ├── utils/                #   随机种子、设备、分类指标
+│   └── visualization/        #   训练曲线与混淆矩阵绘图
 ├── experiments/              # 按主题编号的实验入口（阶段 B 起填充）
 ├── tests/                    # pytest 自动化测试
 └── scripts/                  # 一次性工具脚本
