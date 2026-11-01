@@ -1,0 +1,16 @@
+# CNN 图像分类实验配置（FashionMNIST，阶段 D 示例）
+data:
+  root: data
+  batch_size: 128
+  val_ratio: 0.2
+  seed: 42
+  num_workers: 0
+
+model:
+  name: cnn
+  num_classes: 10
+  in_channels: 1
+
+train:
+  epochs: 10
+  lr: 0.001

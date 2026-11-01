@@ -1,0 +1,17 @@
+# MLP 图像分类实验配置（FashionMNIST，阶段 D 示例）
+data:
+  root: data
+  batch_size: 128
+  val_ratio: 0.2
+  seed: 42
+  num_workers: 0
+
+model:
+  name: mlp
+  num_classes: 10
+  hidden_dims: [128, 64]
+  dropout: 0.2
+
+train:
+  epochs: 15
+  lr: 0.001
