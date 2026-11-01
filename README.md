@@ -23,7 +23,7 @@
 | A | 工程初始化 | ✅ 已完成 |
 | B | PyTorch 基础实验 | ✅ 已完成 |
 | C | 机器学习与图像分类 | ✅ 已完成 |
-| D | 可靠实验流程 | 待开始 |
+| D | 可靠实验流程 | ✅ 已完成 |
 | E | 图像通信实验 | 待开始 |
 | F | 语义通信原型 | 待开始 |
 | G | 后续研究扩展 | 待开始 |
@@ -105,6 +105,18 @@ python experiments/02_image_classification/02_cnn_classification.py
 （保存到 `outputs/02_image_classification/`，不提交 Git）。详见
 [experiments/02_image_classification/README.md](experiments/02_image_classification/README.md)。
 
+阶段 D 把上述流程升级为「YAML 配置驱动 + 可复用运行器」，超参数外置到
+`configs/`，结果自动记录到 `results.yaml`（配置 + 真实指标 + 时间戳）。示例：
+
+```bash
+# 按 YAML 配置运行一次完整实验（MLP / CNN）
+python experiments/03_reliable_training/run_experiment.py --config configs/mlp_fashionmnist.yaml
+python experiments/03_reliable_training/run_experiment.py --config configs/cnn_fashionmnist.yaml
+```
+
+详见 [experiments/03_reliable_training/README.md](experiments/03_reliable_training/README.md)
+与实验记录模板 [docs/experiment_record.md](docs/experiment_record.md)。
+
 ## 项目结构
 
 ```
@@ -114,14 +126,15 @@ visionlab-semantic-communication/
 ├── .gitignore                # 排除 .venv / 数据 / 缓存 / 密钥
 ├── pyproject.toml            # 包元数据 + src 布局 + pytest 配置
 ├── requirements.txt          # 运行时依赖（torch 走 CPU 源单独安装）
-├── configs/                  # YAML 实验配置（阶段 D 起填充）
+├── configs/                  # YAML 实验配置
 ├── data/
 │   └── README.md             # 数据集获取/存储/隐私说明（不提交数据本体）
 ├── docs/                     # 学习路线、理论解释、实验记录
 ├── src/visionlab/            # 可复用代码（核心）
+│   ├── config/               #   实验配置管理（dataclass + YAML）
 │   ├── data/                 #   数据集加载与划分（FashionMNIST）
 │   ├── models/               #   MLP / CNN 模型定义
-│   ├── train/                #   训练/评估/checkpoint 通用流程
+│   ├── train/                #   训练/评估/checkpoint/可复用运行器
 │   ├── utils/                #   随机种子、设备、分类指标
 │   └── visualization/        #   训练曲线与混淆矩阵绘图
 ├── experiments/              # 按主题编号的实验入口（阶段 B 起填充）
