@@ -24,7 +24,7 @@
 | B | PyTorch 基础实验 | ✅ 已完成 |
 | C | 机器学习与图像分类 | ✅ 已完成 |
 | D | 可靠实验流程 | ✅ 已完成 |
-| E | 图像通信实验 | 待开始 |
+| E | 图像通信实验 | ✅ 已完成 |
 | F | 语义通信原型 | 待开始 |
 | G | 后续研究扩展 | 待开始 |
 
@@ -117,6 +117,22 @@ python experiments/03_reliable_training/run_experiment.py --config configs/cnn_f
 详见 [experiments/03_reliable_training/README.md](experiments/03_reliable_training/README.md)
 与实验记录模板 [docs/experiment_record.md](docs/experiment_record.md)。
 
+阶段 E 的图像通信实验位于 `experiments/04_image_comm/`，把「通信」简化为
+「压缩 + 加噪 + 重建」，用 PSNR / MSE 量化重建质量。示例：
+
+```bash
+# JPEG / 下采样压缩强度对重建质量的影响
+python experiments/04_image_comm/01_compression_quality.py
+
+# 高斯噪声信道强度对重建质量的影响
+python experiments/04_image_comm/02_noise_channel.py
+```
+
+可复用代码在 `src/visionlab/comm/`（噪声信道、编解码）与
+`src/visionlab/utils/image_metrics.py`（MSE / PSNR）。注意：这是教学用的简化
+实验，不涉及真实信源/信道编码，不代表真实通信系统。详见
+[experiments/04_image_comm/README.md](experiments/04_image_comm/README.md)。
+
 ## 项目结构
 
 ```
@@ -131,11 +147,12 @@ visionlab-semantic-communication/
 │   └── README.md             # 数据集获取/存储/隐私说明（不提交数据本体）
 ├── docs/                     # 学习路线、理论解释、实验记录
 ├── src/visionlab/            # 可复用代码（核心）
+│   ├── comm/                 #   简化图像通信（噪声信道、编解码）
 │   ├── config/               #   实验配置管理（dataclass + YAML）
 │   ├── data/                 #   数据集加载与划分（FashionMNIST）
 │   ├── models/               #   MLP / CNN 模型定义
 │   ├── train/                #   训练/评估/checkpoint/可复用运行器
-│   ├── utils/                #   随机种子、设备、分类指标
+│   ├── utils/                #   随机种子、设备、分类与图像质量指标
 │   └── visualization/        #   训练曲线与混淆矩阵绘图
 ├── experiments/              # 按主题编号的实验入口（阶段 B 起填充）
 ├── tests/                    # pytest 自动化测试

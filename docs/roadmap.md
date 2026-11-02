@@ -72,13 +72,24 @@
 可复现性验证：阶段 D 运行器与阶段 C 脚本使用相同超参数与随机种子时，MLP / CNN
 的验证与测试指标逐位一致（MLP 测试 acc 0.8777，CNN 测试 acc 0.8980）。
 
-## 阶段 E：图像通信实验
+## 阶段 E：图像通信实验（已完成）
 
 主题：图像/特征压缩、可控噪声干扰、图像重建、不同条件下重建质量对比，
 解释 PSNR、MSE 等指标。
 
-- `experiments/04_image_comm/`
-- 明确标注这是**简化实验**，不代表真实通信系统
+已完成：
+
+- [x] `src/visionlab/utils/image_metrics.py`：numpy 自实现 MSE / PSNR
+- [x] `src/visionlab/comm/codec.py`：简化编解码（JPEG 有损压缩 / 下采样重建）
+- [x] `src/visionlab/comm/channel.py`：加性高斯噪声信道（sigma 可控、裁剪到 [0, 1]）
+- [x] `experiments/04_image_comm/`：两个可运行实验
+      （01 压缩强度扫描、02 噪声强度扫描），绘制 PSNR 曲线并展示示例重建图
+- [x] 配套 pytest 测试（阶段累计 41 项全部通过）
+- [x] 明确标注这是**简化实验**，不代表真实通信系统
+
+留待后续：
+
+- [ ] 真实信源/信道编码（尚不涉及，避免过度设计）
 
 ## 阶段 F：语义通信原型
 
